@@ -10,23 +10,23 @@ tf-destroy:
 	@./infra/destroy.sh $(domain) $(op_vault) $(aws_region)
 
 build:
-	@docker build . -t dev
+	@docker build . -t emberoma
 
 run:
-	@docker run --name dev -p 3000:3000 dev tail -f /dev/null
+	@docker run --name emberoma -p 3000:3000 emberoma tail -f /dev/null
 
 stop:
 	@docker stop $$(docker ps -q)
-	@docker rm dev
+	@docker rm emberoma
 
 copy-to:
-	@docker exec dev sh -c "rm -rf /html/*"
-	@docker cp ~/Repositories/Personal/emberoma.com/website/. dev:/html/
-	@docker exec dev sh -c \
+	@docker exec emberoma sh -c "rm -rf /html/*"
+	@docker cp ./website/. emberoma:/html/
+	@docker exec emberoma sh -c \
 		"cd /html && rm -rf node_modules && npm install && npm run build && npm run start"
 
 copy-from:
-	@docker cp dev:/html/. ~/Repositories/Personal/emberoma.com/website/
+	@docker cp emberoma:/html/. ./website/
 
 update:
 	@./infra/update_s3.sh $(domain) $(op_vault)

@@ -29,10 +29,10 @@
     a:hover {
       color: #007f66; /* Viridian green */
       box-shadow: 0 2px 0 #007f66; /* Adds underline effect on hover */
-      text-shadow: 
-        -1px -1px 0 white, 
-        1px -1px 0 white, 
-        -1px  1px 0 white, 
+      text-shadow:
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px  1px 0 white,
         1px  1px 0 white;
     }
   </style>
