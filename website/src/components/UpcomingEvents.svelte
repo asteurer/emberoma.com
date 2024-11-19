@@ -8,7 +8,7 @@
             location: 'Friend\'s Bar in Austin, TX',
             time: '7:30pm - 10:30pm',
             posterImage: imageBaseURL + 'salted_caramel_poster.jpg'
-        }
+        },
     ];
 </script>
 
@@ -32,13 +32,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 2rem;
+      padding: 2rem 0;
     }
 
     .poster-container {
       position: relative;
       width: 80%;
       max-width: 600px;
+      margin-bottom: 1rem;
     }
 
     .poster {
@@ -61,20 +62,22 @@
       justify-content: center;
       align-items: center;
       opacity: 0;
-      border-radius: 10px;
+      border-radius: 10px; /* Match the poster's border radius */
       text-align: center;
-      padding: 1rem;
+      padding: 0; /* Ensure no extra padding interferes with centering */
+      box-sizing: border-box; /* Ensures consistent dimensions */
       transition: opacity 0.3s ease;
     }
 
     .details-overlay h2 {
       font-size: 2rem;
-      margin-bottom: 1rem;
+      margin: 0 0 1rem; /* Remove top margin, keep bottom margin */
     }
 
     .details-overlay p {
-      margin: 0.5rem 0;
+      margin: 0.5rem 0; /* Consistent spacing for paragraphs */
     }
+
 
     .poster-container:hover .poster {
       transform: scale(1.05);
@@ -84,4 +87,5 @@
     .poster-container:hover .details-overlay {
       opacity: 1;
     }
+
   </style>

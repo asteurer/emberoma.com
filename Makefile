@@ -20,7 +20,10 @@ stop:
 	@docker rm dev
 
 copy-to:
+	@docker exec dev sh -c "rm -rf /html/*"
 	@docker cp ~/Repositories/Personal/emberoma.com/website/. dev:/html/
+	@docker exec dev sh -c \
+		"cd /html && rm -rf node_modules && npm install && npm run build && npm run start"
 
 copy-from:
 	@docker cp dev:/html/. ~/Repositories/Personal/emberoma.com/website/
