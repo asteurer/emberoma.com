@@ -2,6 +2,7 @@
 	import BandSection from './components/BandSection.svelte';
 	import SocialLinks from './components/SocialLinks.svelte';
 	import UpcomingEvents from './components/UpcomingEvents.svelte';
+	import Albums from './components/Albums.svelte';
   </script>
 
   <main>
@@ -11,6 +12,8 @@
 	</header>
 
 	<UpcomingEvents />
+
+	<Albums />
 
 	<BandSection />
   </main>

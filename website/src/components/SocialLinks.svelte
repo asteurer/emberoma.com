@@ -1,8 +1,7 @@
 <script>
     export let links = [
-      { platform: 'Instagram', url: 'https://instagram.com/bandname' },
-      { platform: 'TikTok', url: 'https://tiktok.com/bandname' },
-      { platform: 'YouTube', url: 'https://youtube.com/bandname' },
+      { platform: 'Instagram', url: 'https://instagram.com/rylessteurermusic' },
+      { platform: 'Spotify', url: 'https://distrokid.com/hyperfollow/emberoma/salted-caramel' },
     ];
   </script>
 
