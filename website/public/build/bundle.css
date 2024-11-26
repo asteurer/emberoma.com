@@ -8,7 +8,7 @@ section.svelte-3ugf9w.svelte-3ugf9w{background:linear-gradient(90deg, #d6a77e, #
         1px -1px 0 #4e342e,
         -1px  1px 0 #4e342e,
         1px  1px 0 #4e342e}.albums.svelte-3ugf9w.svelte-3ugf9w{display:flex;justify-content:center;align-items:center;padding:2rem 0}.album-container.svelte-3ugf9w.svelte-3ugf9w{position:relative;width:80%;max-width:600px;margin-bottom:1rem}.album.svelte-3ugf9w.svelte-3ugf9w{width:100%;border-radius:10px;box-shadow:0 4px 8px rgba(0, 0, 0, 0.2);transition:transform 0.3s ease, opacity 0.3s ease}.album-container.svelte-3ugf9w:hover .album.svelte-3ugf9w{transform:scale(1.05)}
-main.svelte-dbpzw5{font-family:'RetroFont', sans-serif;background:#f3e2d0;color:#5c3c1e}html,body{margin:0 !important;padding:0 !important;width:100% !important}@font-face{font-family:'CooperBlack';src:url('/fonts/COOPBL.TTF');font-weight:normal;font-style:normal}header.hero.svelte-dbpzw5{font-family:'CooperBlack', sans-serif;font-size:larger;text-align:center;padding:2rem;background:#f89c6e;color:white;text-shadow:-1px -1px 0 #000, /* Top left */
+main.svelte-u2uwyh{font-family:'RetroFont', sans-serif;background:#f3e2d0;color:#5c3c1e}html,body{margin:0 !important;padding:0 !important;width:100% !important}@font-face{font-family:'CooperBlack';src:url('/fonts/COOPBL.TTF');font-weight:normal;font-style:normal}header.hero.svelte-u2uwyh{font-family:'CooperBlack', sans-serif;font-size:larger;text-align:center;padding:2rem;background:#f89c6e;color:white;text-shadow:-1px -1px 0 #000, /* Top left */
 			1px -1px 0 #000, /* Top right */
 			-1px  1px 0 #000, /* Bottom left */
-			1px  1px 0 #000}
+			1px  1px 0 #000}footer.svelte-u2uwyh{text-align:center}

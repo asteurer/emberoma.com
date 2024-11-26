@@ -16,6 +16,8 @@
 	<Albums />
 
 	<BandSection />
+
+	<footer> <small>&copy; Copyright 2024, EMBEROMA</small> </footer>
   </main>
 
   <style>
@@ -50,6 +52,10 @@
 			1px -1px 0 #000, /* Top right */
 			-1px  1px 0 #000, /* Bottom left */
 			1px  1px 0 #000; /* Bottom right */
+	}
+
+	footer {
+		text-align: center;
 	}
 
   </style>
