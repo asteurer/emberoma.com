@@ -95,15 +95,15 @@ output "s3_bucket_name" {
 }
 
 ####################################
-# S3 BUCKET
+# CLOUDFLARE
 ####################################
-
+# I wasn't able to find a way to add 'flexible SSL/TLS' mode + 'Always Use HTTPS' in the Edge Certificates tab, so that had to be set in the GUI.
 resource "cloudflare_record" "root" {
   zone_id = var.cloudflare_zone_id
   name    = "www"
   content =  aws_s3_bucket_website_configuration.static_files.website_endpoint
   type    = "CNAME"
-  proxied = false
+  proxied = true
   ttl     = 60
 }
 
@@ -112,6 +112,6 @@ resource "cloudflare_record" "www" {
   name    = "@"
   content =  aws_s3_bucket_website_configuration.static_files.website_endpoint
   type    = "CNAME"
-  proxied = false
+  proxied = true
   ttl     = 60
 }
