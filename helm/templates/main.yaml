@@ -1,0 +1,71 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.prefix }}-front-end"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "{{ .Values.prefix }}-front-end"
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.prefix }}-front-end"
+    spec:
+      containers:
+        - name: "{{ .Values.prefix }}-front-end"
+          image: "{{ .Values.image }}"
+          imagePullPolicy: Always
+          env:
+            - name: BASE_URL
+              value: "{{ .Values.baseURL }}"
+            - name: ACCESS_KEY
+              value: "{{ .Values.accessKey }}"
+            - name: SECRET_KEY
+              value: "{{ .Values.secretKey }}"
+            - name: BUCKET_NAME
+              value: "{{ .Values.bucketName }}"
+            - name: NODE_TLS_REJECT_UNAUTHORIZED # Disables SSL certificate validation (same as mc --insecure)
+              value: "0"
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Values.prefix }}-front-end"
+  labels:
+    app: "{{ .Values.prefix }}-front-end"
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: "{{ .Values.prefix }}-front-end"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.prefix }}-cloudflared"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "{{ .Values.prefix }}-cloudflared"
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.prefix }}-cloudflared"
+    spec:
+      containers:
+        - name: "{{ .Values.prefix }}-cloudflared"
+          image: cloudflare/cloudflared:2025.4.0
+          imagePullPolicy: Always
+          command: ["cloudflared", "tunnel", "--no-autoupdate", "run", "--token", "$(CF_TOKEN)"]
+          env:
+          - name: CF_TOKEN
+            value: "{{ .Values.cfToken }}"
