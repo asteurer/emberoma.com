@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: "{{ .Values.prefix }}-front-end"
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: "{{ .Values.prefix }}-front-end"
@@ -13,6 +13,15 @@ spec:
       labels:
         app: "{{ .Values.prefix }}-front-end"
     spec:
+      affinity:
+        podAntiAffinity: # Make sure servers aren't scheduled on same node
+          preferredDuringSchedulingIgnoredDuringExecution: # Set to 'preferred' just in case we have a single-node cluster
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: "{{ .Values.prefix }}-front-end"
+              topologyKey: kubernetes.io/hostname
       containers:
         - name: "{{ .Values.prefix }}-front-end"
           image: "{{ .Values.image }}"
@@ -52,7 +61,7 @@ kind: Deployment
 metadata:
   name: "{{ .Values.prefix }}-cloudflared"
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: "{{ .Values.prefix }}-cloudflared"
@@ -61,6 +70,15 @@ spec:
       labels:
         app: "{{ .Values.prefix }}-cloudflared"
     spec:
+      affinity:
+        podAntiAffinity: # Make sure servers aren't scheduled on same node
+          preferredDuringSchedulingIgnoredDuringExecution: # Set to 'preferred' just in case we have a single-node cluster
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: "{{ .Values.prefix }}-cloudflared"
+              topologyKey: kubernetes.io/hostname
       containers:
         - name: "{{ .Values.prefix }}-cloudflared"
           image: cloudflare/cloudflared:2025.4.0
