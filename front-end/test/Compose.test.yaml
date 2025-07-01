@@ -1,0 +1,64 @@
+services:
+  front-end:
+    image: ghcr.io/asteurer/emberoma.com-front-end
+    container_name: front-end
+    ports:
+      - "8080:8080"
+    environment:
+      - S3_ENDPOINT=minio
+      - S3_ENDPOINT_PORT=9000
+      - ACCESS_KEY=minioadmin
+      - SECRET_KEY=minioadmin
+      - BUCKET_NAME=emberoma-com
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - USE_SSL=false
+    depends_on:
+      - minio-init
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    ports:
+      - "9000:9000"  # MinIO API
+      - "9001:9001"  # MinIO Console
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  minio-init:
+    image: minio/mc:latest
+    container_name: minio-init
+    depends_on:
+      - minio
+    volumes:
+      - ./images:/images:ro  # Mount images as read-only
+    entrypoint: >
+      /bin/sh -c "
+      echo 'Waiting for MinIO to be ready...';
+      until mc alias set myminio http://minio:9000 minioadmin minioadmin; do sleep 2; done;
+      echo 'Creating bucket...';
+      mc mb myminio/emberoma-com --ignore-existing;
+      echo 'Copying images...';
+      mc mirror /images myminio/emberoma-com/images --overwrite;
+      echo 'Initialization complete!';
+      "
+    networks:
+      - app-network
+    restart: "no"  # Only run once
+
+volumes:
+  minio_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
