@@ -1,0 +1,35 @@
+image_tag := "ghcr.io/asteurer/emberoma.com-front-end"
+
+build:
+    docker build . -t {{image_tag}}
+
+up: down build
+    docker compose -f test/Compose.test.yaml up -d
+
+down:
+    docker compose -f test/Compose.test.yaml down
+
+# To specify a tag other than "canary", include it after the "push" command:
+# `just push YOUR_VERSION_TAG_HERE`
+push version_tag="canary": build
+    docker tag {{image_tag}} {{image_tag}}:{{version_tag}}
+    docker login ghcr.io
+    docker push {{image_tag}}:{{version_tag}}
+
+
+######################################
+###  Update Changes in Kubernetes  ###
+######################################
+# kubectl delete pod -n {{namespace}} $(kubectl get pod -n {{namespace}} | awk '/front-end/ {print $1}')
+
+###################################
+###  Connect to MinIO Console  ###
+###################################
+# kubectl port-forward svc/minio-tenant-console -n {{namespace}} {{port}}:{{port}}
+
+#####################################
+###  MinIO Bucket Admin Commands  ###
+#####################################
+# mc --insecure admin user add {{target}} {{access_key}} {{secret_key}}
+# mc --insecure admin policy create {{target}} {{policy_name}} {{policy_file}}
+# mc --insecure admin policy attach {{target}} {{policy_name}} --user {{user}}

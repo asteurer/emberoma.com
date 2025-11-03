@@ -1,8 +1,24 @@
-@font-face {
-	font-family: 'CooperBlack';
-	src: url('/fonts/COOPBL.TTF');
-	font-weight: normal;
-	font-style: normal;
+:root {
+	/*
+	In case you need it later, you can use this tool: https://www.w3schools.com/colors/colors_picker.asp
+	Colors used:
+	- 5d2012: caput mortuum
+	- d5954c: butterscotch
+	- 965324: brown
+	- 562d18: seal brown
+	- f5ddb5: wheat
+		- f9ebd2: lighter version of wheat
+	*/
+	--global-color-background: #F5DDB5;
+	--global-color-font-paragraph: #562d18;
+	--global-color-font-header: #5d2012;
+	--global-color-accent: #f9ebd2;
+
+	--header-color-background: #965324;
+	--header-color-title-text: #F5DDB5;
+	--header-color-nav-text: #f7ad58;
+	--header-color-nav-text-hover: #5D2012;
+	--header-color-nav-text-hover-outline: #F5DDB5;
 }
 
 html, body {
