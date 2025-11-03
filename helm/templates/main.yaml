@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: "{{ .Values.prefix }}-front-end"
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       app: "{{ .Values.prefix }}-front-end"
@@ -27,14 +27,18 @@ spec:
           image: "{{ .Values.image }}"
           imagePullPolicy: Always
           env:
-            - name: BASE_URL
-              value: "{{ .Values.baseURL }}"
+            - name: S3_ENDPOINT
+              value: "{{ .Values.s3Endpoint }}"
+            - name: S3_ENDPOINT_PORT
+              value: "{{ .Values.s3EndpointPort }}"
             - name: ACCESS_KEY
               value: "{{ .Values.accessKey }}"
             - name: SECRET_KEY
               value: "{{ .Values.secretKey }}"
             - name: BUCKET_NAME
               value: "{{ .Values.bucketName }}"
+            - name: USE_SSL
+              value: "true"
             - name: NODE_TLS_REJECT_UNAUTHORIZED # Disables SSL certificate validation (same as mc --insecure)
               value: "0"
           ports:
@@ -61,7 +65,7 @@ kind: Deployment
 metadata:
   name: "{{ .Values.prefix }}-cloudflared"
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       app: "{{ .Values.prefix }}-cloudflared"
