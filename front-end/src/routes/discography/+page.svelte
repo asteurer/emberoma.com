@@ -5,6 +5,14 @@
 <DefaultLayout>
 <!-- These need to be ordered Newest to Oldest -->
     <Album
+      albumTitle = "SAVE"
+      group = "ra!"
+      description = "Written and recorded at Studio Emberoma."
+      spotifyLink = "https://open.spotify.com/track/4dc4PnQ0rCalvncghTAR8T?si=6fa02c7decb34e63"
+      imageUrl = "/api/images/discography/ra!_save.jpg"
+      imageAlt = "A picture of the band eating food on top of their various instruments."
+    />
+    <Album
       albumTitle = "Unbothered"
       group = "Nico Little and the North Americans"
       description = "Featuring Greyson Turner. Written and recorded at Studio Emberoma."
