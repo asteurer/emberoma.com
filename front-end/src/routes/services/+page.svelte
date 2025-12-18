@@ -17,7 +17,7 @@
                 <ul>
                     <li>Drums: <strong>$100/song</strong></li>
                     <li>Bass: <strong>$100/song</strong></li>
-                    <li>Drums and Bass: <strong>$100/song</strong></li>
+                    <li>Drums and Bass: <strong>$150/song</strong></li>
                 </ul>
             </li>
         <ul>

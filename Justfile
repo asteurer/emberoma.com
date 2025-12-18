@@ -1,16 +1,20 @@
 image_tag := "ghcr.io/asteurer/emberoma.com-front-end"
 
+[working-directory: 'front-end']
 build:
     docker build . -t {{image_tag}}
 
+[working-directory: 'front-end']
 up: down build
     docker compose -f test/Compose.test.yaml up -d
 
+[working-directory: 'front-end']
 down:
     docker compose -f test/Compose.test.yaml down
 
 # To specify a tag other than "canary", include it after the "push" command:
 # `just push YOUR_VERSION_TAG_HERE`
+[working-directory: 'front-end']
 push version_tag="canary": build
     docker tag {{image_tag}} {{image_tag}}:{{version_tag}}
     docker login ghcr.io
