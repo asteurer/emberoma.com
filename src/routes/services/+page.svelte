@@ -1,4 +1,5 @@
 <script>
+    import { getImageUrl } from '$lib/imageConfig.js';
     import DefaultLayout from "$lib/components/DefaultLayout.svelte"
     import Information from "$lib/components/Information.svelte";
 </script>
@@ -22,7 +23,7 @@
             </li>
         <ul>
         "
-        imageUrl = "/api/images/services.jpg"
+        imageUrl = {getImageUrl('services.jpg')}
         imageAlt = "A person working with music software on a computer"
     />
 </DefaultLayout>

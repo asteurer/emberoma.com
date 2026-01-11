@@ -1,9 +1,11 @@
 <script>
+  import { getImageUrl } from '$lib/imageConfig.js';
+
   export let group = "DEFAULT GROUP";
   export let spotifyLink = "/";
   export let albumTitle = "DEFAULT ALBUM TITLE"
   export let description = "DEFAULT DESCRIPTION";
-  export let imageUrl = "/api/images/default.jpg";
+  export let imageUrl = getImageUrl('default.jpg');
   export let imageAlt = "DEFAULT IMAGE ALT";
 </script>
 

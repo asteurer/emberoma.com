@@ -1,4 +1,5 @@
 <script>
+    import { getImageUrl } from '$lib/imageConfig.js';
     import DefaultLayout from "$lib/components/DefaultLayout.svelte"
     import Information from "$lib/components/Information.svelte";
     import Profile from "$lib/components/Profile.svelte";
@@ -14,7 +15,7 @@
         mastering services. We curate a strong sense of comfort and free expression in studio by offering friendly and
         flexible services.
         "
-        imageUrl = "/api/images/about.jpg"
+        imageUrl = {getImageUrl('about.jpg')}
         imageAlt = "Image of the studio"
     />
     <Profile
@@ -26,7 +27,7 @@
         collaborative project album, Salted Caramel - Emberoma, Riley officially partnered up with longtime
         friend/bandmate, Seth Thomas to create Studio Emberoma. Riley is available for recording, mixing, and session
         work (drums)."
-        imageUrl = "/api/images/riley_steurer.jpg"
+        imageUrl = {getImageUrl('riley_steurer.jpg')}
         imageAlt = "Image of Riley Steurer"
     />
     <Profile
@@ -36,7 +37,7 @@
         his hometown to the heart of Austin in 2023. Seth has played in bands throughout the years, but made a mark in
         the band Cabronco’s short career before being recruited by the bands Nico Little and the North Americans and
         ra!. Seth is available for recording, mixing, mastering, and session work."
-        imageUrl = "/api/images/seth_thomas.jpg"
+        imageUrl = {getImageUrl('seth_thomas.jpg')}
         imageAlt = "Image of Seth Thomas"
     />
 </DefaultLayout>

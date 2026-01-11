@@ -1,8 +1,0 @@
-image: ghcr.io/asteurer/emberoma.com-front-end:latest
-prefix: <FILL_IN>
-s3Endpoint: <FILL_IN>
-s3EndpointPort: <FILL_IN>
-accessKey: <FILL_IN>
-secretKey: <FILL_IN>
-bucketName: <FILL_IN>
-cfToken: <FILL_IN>

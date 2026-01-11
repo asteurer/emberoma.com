@@ -1,0 +1,27 @@
+services:
+  emberoma:
+    image: emberoma
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Use bundled images by default (can override with .env file)
+        VITE_IMAGE_SOURCE: ${VITE_IMAGE_SOURCE:-bundled}
+        VITE_CDN_BASE_URL: ${VITE_CDN_BASE_URL:-}
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    container_name: emberoma
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+  cloudflared:
+    image: cloudflare/cloudflared:2025.4.0
+    container_name: cloudflared
+    restart: unless-stopped
+    command: ["tunnel", "--no-autoupdate", "run", "--token", "${CF_TOKEN}"]
+    environment:
+      - CF_TOKEN=${CF_TOKEN}

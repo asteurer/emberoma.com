@@ -1,7 +1,9 @@
 <script>
-  export let title = "DEFAULT TITLE";
-  export let description = "DEAULT DESCRIPTION";
-  export let imageUrl = "/api/images/default.jpg";
+  import { getImageUrl } from '$lib/imageConfig.js';
+
+  export let about = "DEFAULT ABOUT";
+  export let name = "DEFAULT NAME";
+  export let imageUrl = getImageUrl('default.jpg');
   export let imageAlt = "DEFAULT IMAGE ALT";
 </script>
 
@@ -9,10 +11,9 @@
   <div class="image-container">
     <img src={imageUrl} alt={imageAlt} class="content-image" />
   </div>
-
   <div class="text-content">
-    <h1 class="title">{title}</h1>
-    <p class="description">{@html description}</p>
+    <h1 class="name">{name}</h1>
+    <p class="about">{@html about}</p>
   </div>
 </div>
 
@@ -26,8 +27,9 @@
   }
 
   .image-container {
+    position: relative;
     width: 100%;
-    height: 250px;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
   }
 
@@ -35,13 +37,14 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
   }
 
   .text-content {
     padding: 2rem;
   }
 
-  .title {
+  .name {
     font-size: 1.875rem;
     font-weight: 700;
     color: var(--global-color-font-header);
@@ -49,7 +52,7 @@
     line-height: 1.2;
   }
 
-  .description {
+  .about {
     font-size: 1rem;
     line-height: 1.6;
     color: var(--global-color-font-paragraph);
@@ -64,14 +67,6 @@
 
     .text-content {
       padding: 1.5rem;
-    }
-
-    .title {
-      font-size: 1.5rem;
-    }
-
-    .image-container {
-      height: 200px;
     }
   }
 </style>

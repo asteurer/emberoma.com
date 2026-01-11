@@ -1,8 +1,5 @@
 node_modules
 
-# To prevent accidental credentials upload
-helm/values.yaml
-
 # Output
 .output
 .vercel
