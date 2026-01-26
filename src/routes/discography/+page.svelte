@@ -6,6 +6,22 @@
 <DefaultLayout>
 <!-- These need to be ordered Newest to Oldest -->
     <Album
+      albumTitle = "TASTE"
+      group = "ra!"
+      description = "Written and recorded at Studio Emberoma."
+      spotifyLink = "https://open.spotify.com/track/6foWfjoqFzySZnTwLHtOHV?si=-teTSji8SveoUCaykBhTrw"
+      imageUrl = {getImageUrl('discography/ra!_taste.jpg')}
+      imageAlt = "An image of the band in yellow raincoats in a field under a dark sky."
+    />
+    <Album
+      albumTitle = "Leaving Baltimore"
+      group = "Honorable Mentions"
+      description = "Drums and bass recorded by Studio Emberoma."
+      spotifyLink = "https://open.spotify.com/track/4CGEfjedpJqdHkJRnpeIRD?si=pJde-Z0gQEqQXmmcHP_G6g"
+      imageUrl = {getImageUrl('discography/honorable_mentions_leaving_baltimore.jpg')}
+      imageAlt = "An abstract painting of a fire escape on a building."
+    />
+    <Album
       albumTitle = "SAVE"
       group = "ra!"
       description = "Written and recorded at Studio Emberoma."

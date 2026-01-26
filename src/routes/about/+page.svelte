@@ -3,9 +3,12 @@
     import DefaultLayout from "$lib/components/DefaultLayout.svelte"
     import Information from "$lib/components/Information.svelte";
     import Profile from "$lib/components/Profile.svelte";
+    import YouTubeEmbed from "$lib/components/YouTubeEmbed.svelte"
 </script>
 
 <DefaultLayout>
+    <YouTubeEmbed videoId="uFw7jocSPS4" title ="Emberoma - Salted Caramel Documentary"/>
+
     <Information
         title = "About Studio Emberoma"
         description = "
@@ -18,6 +21,7 @@
         imageUrl = {getImageUrl('about.jpg')}
         imageAlt = "Image of the studio"
     />
+
     <Profile
         name = "Riley Steurer"
         about = "From St. George, Utah, Riley is a powerful drummer of over 13 years. In 2021, Riley set his
@@ -30,6 +34,7 @@
         imageUrl = {getImageUrl('riley_steurer.jpg')}
         imageAlt = "Image of Riley Steurer"
     />
+
     <Profile
         name = "Seth Thomas"
         about = "Born in Dallas, and raised just outside of Austin in Round Rock, Texas, Seth is a bassist of over 10 years.
